@@ -7,6 +7,7 @@
         <Product>LethalLib</Product>
         <Description>Content-addition API for Lethal Company</Description>
 
+        <LethalCompanyDir>C:\Program Files (x86)\Steam\steamapps\common\Lethal Company\</LethalCompanyDir>
         <PackageId>Evaisa.LethalLib</PackageId>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <IsPackable>true</IsPackable>
@@ -48,7 +49,7 @@
             <HintPath>$(LethalCompanyDir)Lethal Company_Data/Managed/Unity.Netcode.Runtime.dll</HintPath>
         </Reference>
         <Reference Include="MMHOOK_Assembly-CSharp">
-            <HintPath>$(TestProfileDir)BepInEx/plugins/MMHOOK/MMHOOK_Assembly-CSharp.dll</HintPath>
+            <HintPath>$(LethalCompanyDir)BepInEx/plugins/MMHOOK/MMHOOK_Assembly-CSharp.dll</HintPath>
         </Reference>
     </ItemGroup>
 

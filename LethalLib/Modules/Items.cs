@@ -192,8 +192,7 @@ public class Items
         var realLevelEnum = Levels.LevelTypes.None;
         bool isVanilla = false;
         
-        if(EnumUtils.IsDefined<Levels.LevelTypes>(name)){
-            realLevelEnum = EnumUtils.Parse<Levels.LevelTypes>(name);
+        if(Enum.TryParse<Levels.LevelTypes>(name, out realLevelEnum)){
             isVanilla = true;
         }
         else

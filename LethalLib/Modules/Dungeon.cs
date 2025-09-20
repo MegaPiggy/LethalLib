@@ -123,10 +123,8 @@ public class Dungeon
     private static void RoundManager_GenerateNewFloor(On.RoundManager.orig_GenerateNewFloor orig, RoundManager self)
     {
         var name = self.currentLevel.name;
-        if (EnumUtils.IsDefined<Levels.LevelTypes>(name))
+        if (Enum.TryParse<Levels.LevelTypes>(name, out var levelEnum))
         {
-            var levelEnum = EnumUtils.Parse<Levels.LevelTypes>(name);
-
             var index = 0;
             self.dungeonGenerator.Generator.DungeonFlow.Lines.ForEach((line) =>
             {
@@ -134,7 +132,7 @@ public class Dungeon
                 {
                     if (dungeonArchetype.LevelTypes.HasFlag(levelEnum))
                     {
-                        if (!line.DungeonArchetypes.Contains(dungeonArchetype.archeType) && (dungeonArchetype.lineIndex == -1 || dungeonArchetype.lineIndex == index)) { 
+                        if (!line.DungeonArchetypes.Contains(dungeonArchetype.archeType) && (dungeonArchetype.lineIndex == -1 || dungeonArchetype.lineIndex == index)) {
                             line.DungeonArchetypes.Add(dungeonArchetype.archeType);
                             if (Plugin.extendedLogging.Value)
                                 Plugin.logger.LogInfo($"Added {dungeonArchetype.archeType.name} to {name}");
@@ -324,7 +322,7 @@ public class Dungeon
     /// </summary>
     public static void AddDungeon(DungeonDef dungeon, Levels.LevelTypes levelFlags)
     {
-        AddDungeon(dungeon.dungeonFlow, dungeon.rarity, levelFlags, dungeon.firstTimeDungeonAudio); 
+        AddDungeon(dungeon.dungeonFlow, dungeon.rarity, levelFlags, dungeon.firstTimeDungeonAudio);
     }
 
     /// <summary>
